@@ -2,51 +2,28 @@
 
 using namespace std;
 
-int main()
-{
-    int one, two, act;
+int main() {
+    int one, two;
     char symbol;
 
-    cout << "The first number:" << endl;
+    cout << "Enter the first number: ";
     cin >> one;
-    cout << "The second number:" << endl;
+    cout << "Enter the second number: ";
     cin >> two;
-    cout << "Please, choose an action (+, -, *, /):" << endl;
+    cout << "Choose an action (+, -, *, /): ";
     cin >> symbol;
 
-    switch(symbol)
-    {
-    case '+':
-    {
-        act = one + two;
-        cout << "Result: " << act << endl;
-        break;
-    }
-    case '-':
-    {
-        act = one - two;
-        cout << "Result: " << act << endl;
-        break;
-    }
-    case '*':
-    {
-        act = one * two;
-        cout << "Result: " << act << endl;
-        break;
-    }
-    case '/':
-    {
-        if (two != 0) {
-            act = one / two;
-            cout << "Result: " << act << endl;
-        } else {
-            cout << "ERROR: Division by zero" << endl;
-        }
-        break;
-    }
-    default:
+    if (symbol == '+' || symbol == '-' || symbol == '*' || (symbol == '/' && two != 0)) {
+        int result = (symbol == '+') ? one + two :
+                         (symbol == '-') ? one - two :
+                         (symbol == '*') ? one * two :
+                         one / two;
+
+        cout << "Result: " << result << endl;
+    } else if (symbol == '/' && two == 0) {
+        cout << "ERROR: Division by zero" << endl;
+    } else {
         cout << "ERROR: Invalid operation" << endl;
-        return -1;
     }
 
     return 0;
